@@ -4,7 +4,7 @@ import '../css/wrapper.scss';
 //Componente Boton basado en el patrón módulo
 import Button from '../js/components/button.js';
 
-//Web Component
+//Web Component (Custom Elements)
 import '../js/components/progressBar.js';
 
 //Librerías de terceros
@@ -24,7 +24,7 @@ var hola = new Button({
 document.body.appendChild(hola.render());
 
 
-//Web Component
+//Web Component (Custom Elements)
 var el = document.createElement('custom-progress-bar');
 el.progress = 20;
 document.body.appendChild(el);
