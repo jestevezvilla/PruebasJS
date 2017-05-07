@@ -6,7 +6,7 @@ const WebpackBrowserPlugin = require('webpack-browser-plugin');
 
 module.exports = function () {
     return {
-        entry: ['./app/js/main.js','./app/css/main.scss'],
+        entry: ['./app/js/main.js', './app/css/main.scss'],
         output: {
             filename: 'js/bundle.js',
             path: path.resolve(__dirname, '../dist')
@@ -26,8 +26,14 @@ module.exports = function () {
         plugins: [
             new ExtractTextPlugin('css/main.css'),
             new HtmlWebpackPlugin({
-                template: './app/index.ejs'
-            })
+                title: 'Index',
+                template: './app/index.template.ejs'
+            }),
+            new HtmlWebpackPlugin({
+                title: 'Tests',
+                filename: 'tests.html',
+                template: './app/tests.template.ejs'
+            }),
         ]
     }
 };
