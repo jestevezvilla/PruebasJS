@@ -13,12 +13,9 @@ export default function Button(options) {
         },
 
         render(){
-
             this.beforeRender();
-
             var el = document.createElement('button');
             el.innerHTML = opt.text;
-
             return el;
         }
     }
