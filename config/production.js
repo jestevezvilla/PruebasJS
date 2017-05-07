@@ -6,7 +6,8 @@ const WebpackBrowserPlugin = require('webpack-browser-plugin');
 
 module.exports = function () {
     return {
-        entry: ['./app/js/main.js', './app/css/main.scss'],
+        //entry: ['./app/js/main.js','./app/css/main.scss'],
+        entry: './app/js/main.js',
         output: {
             filename: 'js/bundle.js',
             path: path.resolve(__dirname, '../dist')
