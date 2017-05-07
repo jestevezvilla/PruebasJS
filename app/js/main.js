@@ -2,7 +2,9 @@
 
 import _ from 'lodash';
 
-var el = document.createElement('div')
+var el = document.createElement('h1')
 el.innerHTML = _.join(['HOLA!!!!', 'Mundo']);
 
-document.body.appendChild(el);
+var ref = document.querySelector('.wrapper');
+document.body.insertBefore(el, ref);
+

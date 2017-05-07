@@ -26,24 +26,8 @@ module.exports = function () {
         plugins: [
             new ExtractTextPlugin('css/main.css'),
             new HtmlWebpackPlugin({
-                title: 'Index',
-                template: './app/index.template.ejs'
-            }),
-            new HtmlWebpackPlugin({
-                title: 'Tests',
-                filename: 'tests.html',
-                template: './app/tests.template.ejs'
-            }),
-            new WebpackBrowserPlugin({
-                browser: 'Chrome',
-                port: 9000,
-                url: 'http://localhost'
+                template: './app/index.ejs'
             })
-        ],
-        devServer: {
-            contentBase: path.join(__dirname, 'dist'),
-            compress: true,
-            port: 9000
-        }
+        ]
     }
 };
