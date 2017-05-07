@@ -6,7 +6,7 @@ const WebpackBrowserPlugin = require('webpack-browser-plugin');
 
 module.exports = function () {
     return {
-        entry: './app/js/main.js',
+        entry: ['./app/js/main.js','./app/css/main.scss'],
         output: {
             filename: 'js/bundle.js',
             path: path.resolve(__dirname, '../dist')
@@ -27,10 +27,15 @@ module.exports = function () {
             new ExtractTextPlugin('css/main.css'),
             new HtmlWebpackPlugin(),
             new WebpackBrowserPlugin({
-                browser: 'Firefox',
+                browser: 'Chrome',
                 port: 9000,
                 url: 'http://localhost'
-                })
-        ]
+            })
+        ],
+        devServer: {
+            contentBase: path.join(__dirname, 'dist'),
+            compress: true,
+            port: 9000
+        }
     }
 };

@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "webpack --env=dev"
+    "start:dev": "webpack-dev-server --env=dev",
+    "build": "webpack --env=production"
   },
   "keywords": [],
   "author": "",
@@ -19,7 +20,8 @@
     "sass-loader": "^6.0.3",
     "style-loader": "^0.16.1",
     "webpack": "^2.4.1",
-    "webpack-browser-plugin": "^1.0.20"
+    "webpack-browser-plugin": "^1.0.20",
+    "webpack-dev-server": "^2.4.5"
   },
   "dependencies": {
     "lodash": "^4.17.4"
