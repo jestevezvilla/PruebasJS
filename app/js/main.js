@@ -7,11 +7,21 @@ import '../css/wrapper.scss';
 // Componente Boton basado en el patrón módulo
 import Button from '../js/components/button';
 
+// Componente para observar el DOM
+import Mutation from '../js/helpers/mutation';
+
 // Web Component (Custom Elements)
 import '../js/components/progressBar';
 
 let el = document.createElement('h1');
+el.id = 'MainTitle';
+
+// Start observing
+const h1Observer = new Mutation(el);
+h1Observer.observe();
+
 el.innerHTML = _.join(['HOLA!!!!', 'Mundo']);
+
 
 const ref = document.querySelector('.wrapper');
 document.body.insertBefore(el, ref);

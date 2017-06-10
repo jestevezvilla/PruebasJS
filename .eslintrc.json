@@ -3,7 +3,9 @@
     "globals": {
         "window": true,
         "document": true,
-        "HTMLElement": true
+        "HTMLElement": true,
+        "MutationObserver": true,
+        "console": true
     },
     "rules": {
         "no-underscore-dangle": 0
