@@ -10,6 +10,9 @@ export default function Button(options) {
   const opt = _.extend(defaultValues, options);
 
   return {
+
+    el: null,
+
     done() {
       const a = 1;
     },
@@ -24,9 +27,9 @@ export default function Button(options) {
 
     render() {
       this.beforeRender();
-      const el = document.createElement('button');
-      el.innerHTML = opt.text;
-      return el;
+      this.el = document.createElement('button');
+      this.el.innerHTML = opt.text;
+      return this.el;
     },
   };
 }

@@ -1,9 +1,7 @@
 export default function Mutation(el) {
   const target = el;
   const observer = new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
-      console.log(mutation);
-    });
+    mutations.forEach(mutation => console.log(mutation));
   });
   return {
     observe() {
