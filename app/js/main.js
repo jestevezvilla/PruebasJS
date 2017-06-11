@@ -4,6 +4,8 @@ import _ from 'lodash';
 // import '../css/main.scss'; Puedo inyectar la css aquí o en el fichero de configuración de webpack
 import '../css/wrapper.scss';
 
+import icono from '../img/freepik.jpg';
+
 // Componente Boton basado en el patrón módulo
 import Button from '../js/components/button';
 import InputText from '../js/components/inputText';
@@ -45,4 +47,9 @@ inputObserver.observe();
 el = document.createElement('custom-progress-bar');
 el.progress = 20;
 document.body.appendChild(el);
+
+
+const img = document.createElement('img');
+img.src = icono;
+document.body.appendChild(img);
 

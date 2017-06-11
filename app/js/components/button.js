@@ -1,5 +1,5 @@
+// const _ = require('lodash');
 import _ from 'lodash';
-
 import '../../css/button.scss';
 
 export default function Button(options) {
@@ -22,12 +22,13 @@ export default function Button(options) {
     },
 
     finish() {
-      const a = 1;
+
     },
 
     render() {
       this.beforeRender();
       this.el = document.createElement('button');
+      this.el.className = 'jvsc_button';
       this.el.innerHTML = opt.text;
       return this.el;
     },
