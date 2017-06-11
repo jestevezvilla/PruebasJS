@@ -50,7 +50,7 @@ const inputObserver = new Mutation(subhead.el);
 inputObserver.observe();
 
 
-const input = new InputText({ value: 21 });
+const input = new InputText();
 document.body.appendChild(input.render());
 
 

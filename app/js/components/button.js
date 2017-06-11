@@ -4,7 +4,7 @@ import '../../css/button.scss';
 
 export default function Button(options) {
   const defaultValues = {
-    text: 'Pulsa',
+    text: 'CLICK!',
   };
 
   const opt = _.extend(defaultValues, options);
