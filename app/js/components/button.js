@@ -9,12 +9,12 @@ export default function Button(options) {
 
   const opt = _.extend(defaultValues, options);
 
+  this.el = null;
+
   return {
 
-    el: null,
-
     done() {
-      const a = 1;
+
     },
 
     beforeRender() {

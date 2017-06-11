@@ -9,6 +9,8 @@ import icono from '../img/freepik.jpg';
 // Componente Boton basado en el patrón módulo
 import Button from '../js/components/button';
 import InputText from '../js/components/inputText';
+import Header from '../js/components/header';
+import Subheader from '../js/components/subheader';
 
 // Componente para observar el DOM
 import Mutation from '../js/helpers/mutation';
@@ -30,17 +32,26 @@ const ref = document.querySelector('.wrapper');
 document.body.insertBefore(el, ref);
 
 
+const head = new Header({ text: 'Cabecera con clase' });
+document.body.appendChild(head.render());
+
+const subhead = new Subheader({ text: 'SubCabecera con clase' });
+document.body.appendChild(subhead.render());
+
 // Componente Boton basado en el patrón módulo
 const hola = new Button({
   text: 'Pulsa aquí',
 });
 document.body.appendChild(hola.render());
 
+hola.el.onclick = () => subhead.addContent('Cambio de cabecera');
+
+const inputObserver = new Mutation(subhead.el);
+inputObserver.observe();
+
+
 const input = new InputText({ value: 21 });
 document.body.appendChild(input.render());
-
-const inputObserver = new Mutation(input.el);
-inputObserver.observe();
 
 
 // Web Component (Custom Elements)

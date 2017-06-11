@@ -1,14 +1,12 @@
-import _ from 'lodash';
-
 export default function InputText(options) {
   const defaultValues = {
     value: '',
   };
   const opt = Object.assign({}, defaultValues, options);
 
-  return {
+  this.el = null;
 
-    el: null,
+  return {
 
     beforeRender() {
 
