@@ -10,6 +10,7 @@ module.exports = {
   context: path.resolve(__dirname, '../app'),
   entry: {
     app: ['./js/main.js'],
+    rx: ['./js/rx.js'],
   },
   output: {
     filename: 'js/[name].bundle.js',
@@ -44,6 +45,12 @@ module.exports = {
       title: 'Tests',
       filename: 'tests.html',
       template: './tests.template.ejs',
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Rx JS',
+      filename: 'rx.html',
+      template: './rx.template.ejs',
+      chunks: ['rx'],
     }),
   ],
 };
