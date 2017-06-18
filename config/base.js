@@ -11,6 +11,7 @@ module.exports = {
   entry: {
     app: ['./js/main.js'],
     rx: ['./js/rx.js'],
+    functional: ['./js/functional.js'],
   },
   output: {
     filename: 'js/[name].bundle.js',
@@ -51,6 +52,12 @@ module.exports = {
       filename: 'rx.html',
       template: './rx.template.ejs',
       chunks: ['rx'],
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Programación Funcional',
+      filename: 'functional.html',
+      template: './functional.template.ejs',
+      chunks: ['functional'],
     }),
   ],
 };
