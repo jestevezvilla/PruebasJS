@@ -59,3 +59,36 @@ const getUsers = memoize(url => function () {
 
 
 getUsers('https://api.github.com/users');
+
+const compose = (...f) => (x) => {
+  f.reverse();
+  return f.reduce((current, func) => func(current), x);
+};
+
+const compose2 = (...fns) =>
+  fns.reduce((f, g) =>
+    (...args) =>
+      f(g(...args)));
+
+const upper = s => s.toUpperCase();
+
+const check = s => `${s}!`;
+
+const toSpan = (s) => {
+  const el = document.createElement('span');
+  el.innerHTML = s.outerHTML || s;
+  return el;
+};
+
+const toDiv = (s) => {
+  const el = document.createElement('div');
+  el.innerHTML = s.outerHTML || s;
+  return el;
+};
+
+const textalizer = compose(upper, compose2(check));
+const htmlizer = compose(toDiv, compose2(toSpan, textalizer));
+
+
+document.body.appendChild(htmlizer('Hola'));
+
