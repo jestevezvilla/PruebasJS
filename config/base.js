@@ -9,10 +9,11 @@ module.exports = {
 
   context: path.resolve(__dirname, '../app'),
   entry: {
-    app: ['./js/main.js'],
+    index: ['./js/main.js'],
     rx: ['./js/rx.js'],
     functional: ['./js/functional.js'],
     flickr: ['./js/flickr.js'],
+    d3: ['./js/d3.js'],
   },
   output: {
     filename: 'js/[name].bundle.js',
@@ -41,6 +42,7 @@ module.exports = {
     new ExtractTextPlugin('css/main.css'),
     new HtmlWebpackPlugin({
       title: 'Index',
+      filename: 'index.html',
       template: './index.template.ejs',
     }),
     new HtmlWebpackPlugin({
@@ -65,6 +67,12 @@ module.exports = {
       filename: 'flickr.html',
       template: './flickr.template.ejs',
       chunks: ['flickr'],
+    }),
+    new HtmlWebpackPlugin({
+      title: 'D3 JS',
+      filename: 'd3.html',
+      template: './d3.template.ejs',
+      chunks: ['d3'],
     }),
   ],
 };
