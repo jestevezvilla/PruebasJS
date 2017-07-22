@@ -12,6 +12,7 @@ module.exports = {
     app: ['./js/main.js'],
     rx: ['./js/rx.js'],
     functional: ['./js/functional.js'],
+    flickr: ['./js/flickr.js'],
   },
   output: {
     filename: 'js/[name].bundle.js',
@@ -58,6 +59,12 @@ module.exports = {
       filename: 'functional.html',
       template: './functional.template.ejs',
       chunks: ['functional'],
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Programación Funcional - FLickr',
+      filename: 'flickr.html',
+      template: './flickr.template.ejs',
+      chunks: ['flickr'],
     }),
   ],
 };
