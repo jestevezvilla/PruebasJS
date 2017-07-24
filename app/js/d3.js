@@ -46,24 +46,24 @@ svg1
 
 const dataset2 = [[12, 32], [43, 32], [13, 43], [21, 32], [54, 14], [54, 1]];
 
-const pad = 20;
+const pad = 50;
 
 const xScale =
   d3.scaleLinear()
-    .domain([0, d3.max(dataset2, d => d[0])])
+    .domain(d3.extent(dataset2, d => d[0]))
     .range([pad, w - pad]);
 
 const yScale =
   d3.scaleLinear()
-    .domain([0, d3.max(dataset2, d => d[1])])
+    .domain(d3.extent(dataset2, d => d[1]))
     .range([h - pad, pad]);
 
 const rScale =
-  d3.scaleLinear()
-    .domain([0, d3.max(dataset2, d => d[1])])
-    .range([1, 10]);
+  d3.scaleSqrt()
+    .domain(d3.extent(dataset2, d => d[1]))
+    .range([0, 40]);
 
-const xAxis = d3.axisBottom(xScale);
+const xAxis = d3.axisBottom(xScale).ticks(5);
 
 const svg2 = d3.select('#graph2')
                 .append('svg')
@@ -73,14 +73,34 @@ const svg2 = d3.select('#graph2')
 
 svg2
   .append('g')
+    .attr('transform', `translate(0, ${h - pad})`)
   .call(xAxis);
 
-svg2
-  .selectAll('circle')
+
+const circles =
+  svg2
+  .selectAll('.ball')
   .data(dataset2)
   .enter()
-  .append('circle')
-    .attr('cx', d => xScale(d[0]))
-    .attr('cy', d => yScale(d[1]))
-    .attr('r', d => rScale(d[1]));
+  .append('g')
+    .attr('class', 'ball')
+    .attr('transform', d =>
+      `translate(${xScale(d[0])}, ${yScale(d[1])})`,
+  );
+
+
+circles
+    .append('circle')
+      .attr('cx', 0)
+      .attr('cy', 0)
+      .attr('r', d => rScale(d[1]))
+      .style('fill', 'blue')
+      .style('fill-opacity', 0.5);
+
+circles
+  .append('text')
+    .attr('text-anchor', 'middle')
+    .attr('fill', 'white')
+    .attr('y', 6)
+    .text(d => d[1]);
 
