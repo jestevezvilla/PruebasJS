@@ -4,7 +4,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UrlLoader = require('url-loader');
 const ImageWebpackLoader = require('image-webpack-loader');
 
-
 module.exports = {
 
   context: path.resolve(__dirname, '../app'),
@@ -14,6 +13,7 @@ module.exports = {
     functional: ['./js/functional.js'],
     flickr: ['./js/flickr.js'],
     d3: ['./js/d3.js'],
+    canvas: ['./js/canvas.js'],
   },
   output: {
     filename: 'js/[name].bundle.js',
@@ -73,6 +73,12 @@ module.exports = {
       filename: 'd3.html',
       template: './d3.template.ejs',
       chunks: ['d3'],
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Canvas',
+      filename: 'canvas.html',
+      template: './canvas.template.ejs',
+      chunks: ['canvas'],
     }),
   ],
 };
