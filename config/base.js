@@ -5,7 +5,7 @@ const UrlLoader = require('url-loader');
 const ImageWebpackLoader = require('image-webpack-loader');
 
 module.exports = {
-
+  devtool: 'eval-source-map',
   context: path.resolve(__dirname, '../app'),
   entry: {
     index: ['./js/main.js'],

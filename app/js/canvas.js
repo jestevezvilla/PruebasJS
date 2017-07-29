@@ -2,6 +2,7 @@ import freepick from '../img/freepik.jpg';
 
 const canvas = document.getElementById('canvas');
 const context = canvas.getContext('2d');
+// const context = canvas.getContext('webgl');
 const linearSpeed = 100;
 const startTime = (new Date()).getTime();
 const myRectangle = {
@@ -43,18 +44,41 @@ const drawRectangle2 = () => {
   context.fill(rect);
   context.stroke(rect);
 };
-
+const myTriangle = {
+  xIncrement: 0,
+  yIncrement: 0,
+};
 const drawTriangle = () => {
   context.beginPath();
 
-  context.moveTo(75, 50);
-  context.lineTo(100, 75);
-  context.lineTo(100, 25);
+  context.moveTo(75 + myTriangle.xIncrement, 50 + myTriangle.yIncrement);
+  context.lineTo(100 + myTriangle.xIncrement, 75 + myTriangle.yIncrement);
+  context.lineTo(100 + myTriangle.xIncrement, 25 + myTriangle.yIncrement);
   context.closePath();
 
   context.lineWidth = 1;
   context.strokeStyle = 'black';
   context.stroke();
+};
+const speed = 1;
+let accel = 1;
+const controls = {
+  37: () => {
+    myTriangle.xIncrement -= speed * accel;
+    return myTriangle;
+  },
+  38: () => {
+    myTriangle.yIncrement -= speed * accel;
+    return myTriangle;
+  },
+  39: () => {
+    myTriangle.xIncrement += speed * accel;
+    return myTriangle;
+  },
+  40: () => {
+    myTriangle.yIncrement += speed * accel;
+    return myTriangle;
+  },
 };
 
 
@@ -84,11 +108,12 @@ const animate = () => {
   // Text
   context.font = '48px serif';
   context.strokeStyle = 'black';
-  context.strokeText('Hello world', 300, 200);
+  context.strokeText('Adiós world', 300, 200);
 
 
   // Image
   context.drawImage(myImage, 300, 400);
+
 
   // request new frame
   window.requestAnimationFrame(animate);
@@ -109,7 +134,23 @@ const init = () => {
   drawTriangle();
   drawRectangle();
   drawRectangle2();
+
+  document.addEventListener('keydown', (ev) => {
+    accel *= 1.2;
+    controls[ev.keyCode] && controls[ev.keyCode]();
+  });
+
+  document.addEventListener('keyup', () => {
+    accel = 1;
+  });
 };
 
 init();
+
+// https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API
+// Frameworks populares
+// http://www.createjs.com/
+// http://paperjs.org/
+// https://threejs.org/
+// http://bashooka.com/coding/html5-canvas-javascript-libraries/
 
