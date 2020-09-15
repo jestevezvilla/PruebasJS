@@ -34,7 +34,7 @@
   "dependencies": {
     "d3": "^4.10.0",
     "immutable": "^3.8.1",
-    "jquery": "^3.2.1",
+    "jquery": "^3.5.0",
     "lodash": "^4.17.19",
     "rambda": "^0.7.5",
     "rx": "^4.1.0"
